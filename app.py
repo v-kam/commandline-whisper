@@ -12,6 +12,9 @@ def process_transcription():
     """
     Handles the recording, transcription, and clipboard copy process.
     """
+    # Initialize the WhisperOpenAI class
+    whisper = WhisperOpenAI()
+
     transciption_kwargs = {"language": "", "prompt": "", "temperature": 0.3}
     print(transciption_kwargs)
 
@@ -22,14 +25,8 @@ def process_transcription():
         # Record audio until spacebar is pressed
         audio_buffer:BytesIO = record_audio_until_spacebar()
 
-        # Initialize the WhisperOpenAI class
-        whisper = WhisperOpenAI()
-
-        # Set transcription kwargs (optional)
-        whisper.st_set_transcription_kwargs(**transciption_kwargs)
-
         # Transcribe the audio
-        transcription_result = whisper.transcribe(audio_buffer)
+        transcription_result = whisper.transcribe(audio_buffer, **transciption_kwargs)
 
         # Print the transcription result
         transcription_text = transcription_result["text"]
