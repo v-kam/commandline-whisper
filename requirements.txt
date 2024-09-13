@@ -1,0 +1,9 @@
+openai
+python-dotenv
+pyperclip
+numpy
+pyaudio
+lameenc
+keyboard
+soundfile
+pyaudio
