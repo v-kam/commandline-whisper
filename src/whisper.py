@@ -8,7 +8,7 @@ assert load_dotenv()
 
 
 class WhisperOpenAI:
-    def __init__(self, deployment_id: str = "whisper") -> None:
+    def __init__(self, deployment_id: str = os.getenv("WHISPER_DEPLOYMENT_NAME")) -> None:
         self.client = AzureOpenAI(
             api_key=os.getenv("AZURE_OPENAI_API_KEY"),
             api_version="2024-02-01",
